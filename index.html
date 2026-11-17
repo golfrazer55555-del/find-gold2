@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<meta name="theme-color" content="#1c120b">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="골드 캐니언">
+<meta name="description" content="서부 개척 시대 협곡에서 금을 캐고 전설의 광맥을 찾는 탐험 게임. PC와 모바일에서 모두 즐길 수 있습니다.">
+<title>골드 캐니언</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' fill='%231c120b'/%3E%3Cpath d='M3 12l3-5h4l3 5z' fill='%23e0a020'/%3E%3Cpath d='M6 7h4l-1-2H7z' fill='%23ffd76e'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Gowun+Dodum&display=swap">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<canvas id="game" tabindex="0" aria-label="게임 화면"></canvas>
+
+<div id="hud" hidden>
+  <div class="hud-stats">
+    <div class="meter hp"><em>체력</em><span class="bar"><i></i></span><b></b></div>
+    <div class="meter food"><em>허기</em><span class="bar"><i></i></span><b></b></div>
+    <div class="meter water"><em>갈증</em><span class="bar"><i></i></span><b></b></div>
+    <div class="meter oil"><em>등불</em><span class="bar"><i></i></span><b></b></div>
+    <div id="h-loc"></div>
+    <div id="h-chips" hidden></div>
+  </div>
+  <div class="hud-side">
+    <div class="hud-info">
+      <strong id="h-money"></strong>
+      <span id="h-ore"></span>
+      <span id="h-clock"></span>
+      <span id="h-gear"></span>
+    </div>
+    <div class="hud-btns">
+      <button type="button" data-ui="map">지도<kbd>M</kbd></button>
+      <button type="button" data-ui="bag">가방<kbd>I</kbd></button>
+      <button type="button" data-ui="menu">메뉴<kbd>Esc</kbd></button>
+    </div>
+  </div>
+</div>
+
+<div id="toasts" aria-live="polite"></div>
+<div id="prompt" hidden></div>
+<div id="banner" hidden></div>
+
+<div id="touch" hidden>
+  <div id="stick-zone"><div id="stick-base"><div id="stick-knob"></div></div></div>
+  <div id="pad">
+    <button type="button" class="pb pb-a" data-act="action" aria-label="행동"><span id="a-label">행동</span></button>
+    <button type="button" class="pb pb-b" data-act="shoot" aria-label="사격"><span>사격</span></button>
+    <button type="button" class="pb pb-c" data-act="dynamite" aria-label="다이너마이트"><span>폭약</span></button>
+    <button type="button" class="pb pb-d" data-act="timber" id="btn-timber" aria-label="버팀목 세우기" hidden><span>버팀목</span></button>
+    <button type="button" class="pb pb-e" data-act="ride" id="btn-ride" aria-label="말 타기" hidden><span>타기</span></button>
+  </div>
+</div>
+
+<div id="modal" class="modal" hidden>
+  <div class="sheet" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <header><h2 id="modal-title"></h2><button type="button" class="x" id="modal-close" aria-label="닫기">✕</button></header>
+    <div class="sheet-body" id="modal-body"></div>
+  </div>
+</div>
+
+<div id="title-screen" hidden>
+  <div class="title-inner">
+    <div class="title-kicker">1873 · 더스트우드 협곡</div>
+    <h1 class="title-logo">골드 캐니언</h1>
+    <div class="title-sub">전설의 광맥</div>
+    <div class="title-btns"></div>
+    <div class="title-foot">PC: WASD 이동 · E 행동/채굴 · F 사격 · Q 폭약<br>모바일: 왼쪽 화면을 끌어 이동, 오른쪽 버튼으로 행동</div>
+  </div>
+</div>
+
+<div id="fade" hidden></div>
+
+<script src="js/util.js"></script>
+<script src="js/audio.js"></script>
+<script src="js/input.js"></script>
+<script src="js/sprites.js"></script>
+<script src="js/world.js"></script>
+<script src="js/mine.js"></script>
+<script src="js/entities.js"></script>
+<script src="js/poker.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/game.js"></script>
+</body>
+</html>
